@@ -1,0 +1,15 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+#noteContainer {
+    margin-bottom: 20px;
+}
+
+.note {
+    margin-bottom: 10px;
+}
+
+button {
+    margin-right: 10px;
+}
