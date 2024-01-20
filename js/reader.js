@@ -47,7 +47,8 @@ function displayNotes() {
 
 //initial setup
 function init() {
-    //
+    displayNotes();
+
     let lastData = localStorage.getItem('notes');
 
     setInterval(() => {
