@@ -7,8 +7,11 @@ body {
 }
 
 .note {
+    display: block;
+    width: 30%;
     margin-bottom: 10px;
 }
+
 
 button {
     margin-right: 10px;

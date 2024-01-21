@@ -16,10 +16,12 @@ function displayNotes() {
 
             // Create and append elements to display each note
             notesArray.forEach((noteObject) => {
-                const noteDiv = document.createElement('div');
-                noteDiv.classList.add('note');
-                noteDiv.textContent = noteObject.content; // Display note content
-                notesDisplay.appendChild(noteDiv);
+                const noteTextarea = document.createElement('textarea');
+                noteTextarea.classList.add('note');
+                // const noteDiv = document.createElement('div');
+                noteTextarea.textContent = noteObject.content;
+                noteTextarea.readOnly = true;
+                notesDisplay.appendChild(noteTextarea);
             });
         } catch (error) {
             console.error('Error parsing notes:', error);  //Log parsing errors
