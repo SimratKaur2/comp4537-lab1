@@ -28,7 +28,12 @@ function init() {
     document.getElementById('addNote').addEventListener('click', addNewNote);
 }
 
-//Function to create and display a new note element
+/**
+ * ChatGPT Assistance Disclosure:
+ * The following function, createNoteElement, was implemented with assistance from ChatGPT.
+ * It dynamically creates and displays a new note element with content, a textarea and a remove button.
+ * and appends them to the note container.
+ */
 function createNoteElement(content) {
     //create a new div to hold the note and the remove button
     const noteElement = document.createElement('div');

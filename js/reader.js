@@ -1,5 +1,8 @@
-//function to display notes
-function displayNotes() {
+/**
+ * ChatGPT Assistance Disclosure:
+ * The following function, displayNotes, was implemented with assistance from ChatGPT.
+ * It is responsible for displaying the notes from localStorage in text areas on the reader page.
+ */function displayNotes() {
 
     //checking if there's any data in localStorage under the key 'notes'
     const notes = localStorage.getItem('notes');
