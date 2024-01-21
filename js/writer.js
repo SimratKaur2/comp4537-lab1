@@ -1,11 +1,10 @@
 
-
 //constructor for a Note
 function Note(content) {
     this.content = content
 }
 
-//function to load existing notes from localStorage
+//Function to load existing notes from localStorage
 function loadNotes() {
     //check if there's any data in localStorage under the key 'notes'
     const notes = localStorage.getItem('notes');
@@ -13,7 +12,6 @@ function loadNotes() {
     //if there is data, parse it from the JSON string back into an array
     if(notes) {
         const notesArray = JSON.parse(notes);
-
         //for each note object in the array, create a text area element
         notesArray.forEach((noteObject) => {
             createNoteElement(noteObject.content)
@@ -21,17 +19,16 @@ function loadNotes() {
     }
 }
 
-//initial setup
+// Initialization function
 function init() {
     //load existing notes from localStorage
-    // TODO: implement the loading logic
     loadNotes();
 
-    //event listener for adding a new note
+    //event listener for adding a new note to 'Add Note' button
     document.getElementById('addNote').addEventListener('click', addNewNote);
 }
 
-//function to populate existing notes
+//Function to create and display a new note element
 function createNoteElement(content) {
     //create a new div to hold the note and the remove button
     const noteElement = document.createElement('div');
@@ -57,29 +54,16 @@ function createNoteElement(content) {
     saveNotes();
 }
 
-//Function to add a new note
+//Function to add a new empty note
 function addNewNote() {
     const noteContainer = document.getElementById('noteContainer');
-    const newNote = new Note('');
-    const noteElement = document.createElement('div');
-    noteElement.classList.add('note'); //adds a class named 'note' to the class list of the 'noteElement'
-    const textArea = document.createElement('textarea');
-    noteElement.appendChild(textArea);
-    const removeButton = document.createElement('button');
-    removeButton.textContent = 'Remove';
-    removeButton.addEventListener('click', function() {
-        removeNoteElement(noteElement)
-    });
-    noteElement.appendChild(removeButton);
-    noteContainer.appendChild(noteElement);
-    saveNotes();
+    createNoteElement('');
 }
 
-//function to remove the note element and update localStorage
+//Function to remove a note element and update localStorage
 function removeNoteElement(noteElement) {
     //remove the note element from the DOM
     noteElement.remove();
-
     //updates the notes array and save it to localStorage
     saveNotes();
 }
@@ -92,14 +76,14 @@ function removeNoteElement(noteElement) {
  * Note objects, then converts this array into a JSON
  * string and saves it under the key 'notes' in localStorage.
  */
-//save notes to localStorage
+//Function to save the current state of notes to localStorage
 function saveNotes() {
     //selects all textarea elements and stores them in a NodeList.
     const notesElements = document.querySelectorAll('textarea');
     const now = new Date();
     const formattedTime = now.toLocaleTimeString();
 
-    //update the lasst saved time display
+    //update the 'last saved at' time display
     document.getElementById('lastSavedTime').textContent = 'Last saved at: ' + formattedTime;
     //converts the NodeList to a true array and maps over it
     //for each textarea element, it creates a new Note object

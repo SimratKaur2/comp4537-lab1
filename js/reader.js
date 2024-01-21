@@ -1,6 +1,5 @@
 //function to display notes
 function displayNotes() {
-    //TODO: implement the display logic
 
     //checking if there's any data in localStorage under the key 'notes'
     const notes = localStorage.getItem('notes');
@@ -11,49 +10,37 @@ function displayNotes() {
 
     //checking if there are any notes to display
     if(notes) {
-        // Attempt to parse notes, handle any errors
+        // Attempt to parse notes, handling any errors
         try {
-
             const notesArray = JSON.parse(notes);
 
             // Create and append elements to display each note
             notesArray.forEach((noteObject) => {
                 const noteDiv = document.createElement('div');
                 noteDiv.classList.add('note');
-                noteDiv.textContent = noteObject.content; // Ensure this matches the property name of your note objects
+                noteDiv.textContent = noteObject.content; // Display note content
                 notesDisplay.appendChild(noteDiv);
             });
         } catch (error) {
-            console.error('Error parsing notes:', error);
-            // Handle the error, maybe display a message to the user
+            console.error('Error parsing notes:', error);  //Log parsing errors
         }
-
-        // //parse the notes from the JSON string back into an array
-        // const notesArray = JSON.parse(notes);
-        //
-        // //create and append elements to display each note
-        // notesArray.forEach((noteObject) => {
-        //     const noteDiv = document.createElement('div');
-        //     noteDiv.classList.add('note');
-        //     noteDiv.textContent = noteObject.content;
-        //     notesDisplay.appendChild(noteDiv);
-        // });
     }
-// Update timestamp
-    const timestampDiv = document.getElementById('lastUpdated'); // Assuming you have an element with this ID
+    // Updating timestamp
+    const timestampDiv = document.getElementById('lastUpdated');
     timestampDiv.textContent = 'Last updated: ' + new Date().toLocaleTimeString();
 
 }
 
-//initial setup
+// Initialization function
 function init() {
     displayNotes();
 
     let lastData = localStorage.getItem('notes');
 
+    //setting interval to refresh notes and display them every 2 seconds
     setInterval(() => {
         const currentData = localStorage.getItem('notes');
-        //comparing the current data with the last data
+        //checking if notes data has changed and update display if so
         if(lastData !== currentData) {
             displayNotes();
             lastData = currentData;
