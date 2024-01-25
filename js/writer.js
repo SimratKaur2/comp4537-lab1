@@ -47,7 +47,7 @@ function createNoteElement(content) {
 
     //create a remove button for the note
     const removeButton = document.createElement('button');
-    removeButton.textContent = userMessages.removeNoteButton;
+    removeButton.textContent = 'Remove';
     //add an event listener to the remove button that will call a function to remove the note
     removeButton.addEventListener('click',function() {
         removeNoteElement(noteElement);
@@ -89,7 +89,7 @@ function saveNotes() {
     const formattedTime = now.toLocaleTimeString();
 
     //update the 'last saved at' time display
-    document.getElementById('lastSavedTime').textContent = userMessages.lastSavedText + " " + formattedTime;
+    document.getElementById('lastSavedTime').textContent = "Last saved at:" + " " + formattedTime;
     //converts the NodeList to a true array and maps over it
     //for each textarea element, it creates a new Note object
     const notesArray = Array.from(notesElements).map(textArea => {

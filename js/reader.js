@@ -27,12 +27,14 @@
                 notesDisplay.appendChild(noteTextarea);
             });
         } catch (error) {
-            console.error(userMessages.errorParsingNotes, error);  //Log parsing errors
+            // console.error(userMessages.errorParsingNotes, error);  //Log parsing errors
+            console.log("Error parsing notes.")
         }
     }
     // Updating timestamp
     const timestampDiv = document.getElementById('lastUpdated');
-    timestampDiv.textContent = userMessages.lastUpdatedText + new Date().toLocaleTimeString();
+    // timestampDiv.textContent = userMessages.lastUpdatedText + new Date().toLocaleTimeString();
+    timestampDiv.textContent = "Last Updated at:" + new Date().toLocaleTimeString();
 
 }
 
